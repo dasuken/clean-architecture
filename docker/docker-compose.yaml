@@ -1,0 +1,15 @@
+services:
+  msyql:
+    image: mysql:5.6.27
+    container_name: mysql_clean
+    volumes:
+    - mysqldata:/var/lib/mysql
+    - ./initdb:/docker-entrypoint-initdb.d
+    ports:
+    - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+
+volumes:
+  mysqldata:
+    driver: local
